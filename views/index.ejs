@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeinBahnPortal</title>
+
+</head>
+<link type="text/css" rel="stylesheet" href="main.css"/>
+
+<body>
+    <div class="main">
+        <div class="classRight">
+            <div class="logos">
+                <img src="images/Doppellogo_klein (1).png" alt="logo">
+                <img src="images/Doppellogo_klein.png" alt="logo">
+            </div>
+        </div>
+
+        <div class = "classLeft">
+            <header>
+                <div class ="headerContent">
+                    <h1 id="welcomeUser">Welcome</h1>
+                    <div class="logout">
+                        <img id="logoutBtn" src="images/sign-out-icon.png" alt="logoutLogo">
+                        <p>Ausloggen</p>
+                    </div>
+                </div>
+            </header>
+            <div class="tittle">
+                <h1>Willkommen</h1>
+                <h2>Fang an Bahn zu sprechen</h2>
+            </div>
+
+            <div class="startLearn">
+                <div class="playMode">
+                    <div class="playModeColumn">
+                        <p id="lernenModeP">Lernen</p>
+                    </div>
+
+                    <div class="playModeColumn">
+                        <p id="testModeP">Test</p>
+                    </div>
+
+                    <div class="playModeColumn">
+                        <p id="übenModeP">Üben</p>
+                    </div>
+                </div>
+
+                <button id="startBtn" onclick="GoToGameMode()">
+                    <span>Start</span>
+                    <img id="trainIcon" src="images/trainIcon.png" alt="Train Icon">
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="JavaScript/main.js"></script>
+</body>
+</html>

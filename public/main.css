@@ -1,0 +1,201 @@
+body {
+    margin: 0%;
+    background-color: rgb(229, 229, 229);
+}
+.classLeft{
+    width: 65%;
+    float: left;
+}
+.tittle {
+    padding: 5rem;
+}
+.tittle h1, h2{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+.tittle h1{
+    font-size: 5rem;
+    color: green;
+}
+header {
+    background-color: green;
+    position: relative;
+    width: 100%;
+    height: 70px;
+}
+#welcomeUser {
+    float: left;
+}
+.headerContent {
+    position: absolute;
+    right: 0;
+}
+.logout{
+    float: left;
+    padding: 1rem;
+}
+.login{
+    float: left;
+    padding: 1rem;
+}
+.classLeft header img{
+    width: 2rem;
+    height: 2rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.logout p {
+    margin: 0%;
+}
+.login p {
+    margin: 0%; 
+}
+.classRight {
+    float: left;
+    background-image: url('images/train.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 35%;
+    height: 100vh;
+    margin: 0%;
+    position: relative;
+    box-shadow: inset;
+}
+.classRight h1{
+    margin: 0%;
+    text-align: center;
+    padding: 20%;
+    font-size: 2.5em;
+    font-family: "Times New Roman", Times, serif;
+}
+.logos {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(33,37,41,0.5);
+}
+.logos img {
+    width: 45%;
+    padding: 10px;
+}
+#startBtn{
+    width: 30rem;
+    height: 5rem;
+    border-radius: 50px;
+    background-color: green;
+    color: white;
+    font-size: 3rem;
+    border: none;
+    margin: 0 auto;
+    display: block;
+}
+#startBtn span{
+    display: inline-block;
+    vertical-align: middle;
+}
+#trainIcon {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.playMode {
+    width: 70%;
+    height: fit-content;
+    margin: 1rem auto;
+    background-color: rgb(173, 181, 189);
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 50px;
+}
+.playModeColumn {
+    float: left;
+    width: 33.3%;
+}
+.playModeColumn p {
+    margin: auto;
+    height: 100%;
+    text-align: center;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.playMode::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+#lernenModeP, #testModeP, #übenModeP {
+    border-radius: 50px;
+}
+
+.startLearn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate (-50%, -50%);
+}
+@media  (max-width: 1257px) {
+    .logos img {
+        display: block;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0px;
+    }
+}
+@media (max-width: 1082px) {
+    .tittle h2, h1 {
+    width: fit-content;
+}
+}
+@media (max-width: 1000px) {
+    .classLeft {
+        background-image: url("images/train.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        height: 100vh;
+    }
+
+    .classRight {
+        visibility: hidden;
+        width: 0;
+    }
+
+    header {
+        position: absolute;
+    }
+    .classLeft {
+        width: 100%;
+    }
+    .startLearn {
+        margin: auto;
+        position: relative;
+        top: 0%;
+        left: 0%;
+    }
+    .tittle h1 {
+        font-size: 3rem;
+    }
+    
+}
+@media (max-width: 480px) {
+    #startBtn {
+        width: 60%;
+    }
+    #startBtn span {
+        font-size: 2rem;
+    }
+    .tittle h1 {
+        font-size: 2rem;
+    }
+    .tittle h2 {
+        font-size: 1.5rem;
+    }
+    .playModeColumn p {
+        font-size: 1.5rem;
+    }
+}

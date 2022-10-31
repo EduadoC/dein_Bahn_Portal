@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Üben Page</title>
+</head>
+<link rel="stylesheet" href="uben.css">
+
+<body>
+    <header>
+        <div class="scoreCounter">
+            <div id="rightScore">
+                <img class="icon" src="images/tick-green-icon.png" alt="Right Logo">
+                <p id="_rightAnswerCounter">0</p>
+            </div>
+
+            <div id="wrongScore">
+                <p id="_wrongAnswerCounter">0</p>
+                <img class="icon" src="images/cross-icon.png" alt="Wrong Logo">
+            </div>
+        </div>
+
+        <div class="settingsAndProfile">
+
+            <div class="profilDiv">
+                <img id="homeBtn" class="icon" src="images/home-icon.png" alt="Home Logo">
+                <p>Home</p>
+            </div>
+            
+            <div class="settingsDiv">
+                <img id="logoutBtn" class="icon" src="images/sign-out-icon.png" alt="Logout Logo">
+                <p>Ausloggen</p>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+        <h1 id="_questionNummer" style="text-align: center;">Fragenummer: 1</h1>
+
+        <div id="questionField">
+            <img src="images/signale/Bü0.png" alt="Signal Foto">
+            <p id="questionTxtField">1. Zweimal pfeifen!</p>
+        </div>
+
+        <div id="answersField">
+            <div>
+                <p id="answerA" class="answer">A</p>
+                <p id="answerC" class="answer">C</p>
+            </div>
+
+            <div>
+                <p id="answerB" class="answer">B</p>
+                <p id="answerD" class="answer">D</p>
+            </div>
+        </div>
+
+        <div id="cofirmAnswerOrSkip">
+            <button id="confirmBtn">Bestätigen</button>
+        </div>
+    </main>
+
+    <script src="JavaScript/uben.js" defer></script>
+</body>
+</html>

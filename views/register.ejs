@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeinBahnPortal</title>
+
+</head>
+<link rel="stylesheet" href="register.css">
+
+<body>
+    <div class="main">
+        <div class="classLeft">
+            <div class="logos">
+                <img src="../../images/Doppellogo_klein (1).png" alt="logo">
+                <img src="../../images/Doppellogo_klein.png" alt="logo">
+            </div>
+        </div>
+
+        <div class="classRight">
+            <header>
+                <div class ="headerContent">
+                    <div class="register">
+                        <img id="signUpLogo" src="../../images/signup-icon.png" alt="signupLogo">
+                        <p>Anmelden</p>
+                    </div>
+                    <div class="login">
+                        <img id="signInLogo" src="../../images/log-in-icon.png" alt="signinLogo">
+                        <p>Einloggen</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="formConteiner">
+                <form id="form" action="/register" method="POST">
+                    <h1 id="tittle">Anmelden</h1>
+
+                    <% if(messages.error) { %>
+                        <div class="alert alert-danger">
+                            <strong><%= messages.error %> </strong>
+                        </div>
+                    <% } %>
+
+                    <label for="nachnameInput">Nachname:</label>
+                    <input placeholder="z.B. Hans" name="name" id="nachnameInput" type="text"><br>
+        
+                    <label for="vornameInput">Vorname:</label>
+                    <input placeholder="z.B. Musterman" id="vornameInput" type="text"><br>
+        
+                    <label for="schullerIDInput">Schuller ID:</label>
+                    <input placeholder="z.B. 1234567" name="schullerID" id="schullerIDInput" type="text"><br>
+        
+                    <label for="passwordInput">Kennwort:</label>
+                    <input placeholder="Password" id="passwordInput" type="password">
+                    
+                    <label for="passwordInput2">Kennwort bestätigen:</label>
+                    <input placeholder="Password" name="password" id="passwordInput2" type="password">
+
+                    <button type="submit"  id="anmeldenBtn">Anmelden</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <script src="JavaScript/register.js"></script>  
+</body>
+</html>
