@@ -11,6 +11,7 @@ const passport = require('passport');
 const initializelizePassport = require('./passport-config');
 const flash = require('express-flash');
 const session = require('express-session');
+const { Console } = require("console");
 
 const users = []
 
@@ -49,18 +50,27 @@ app.post('/login', passport.authenticate('local' , {
 }));
 
 //Configuring the register post functionallity
-app.post("/register", async (req, res) => {
+app.post("/register", async (req, res, done) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);//this hashed the pass
-        //push register data to an array an save them
-        users.push({
-            id: Date.now().toString(),
-            name: req.body.name,
-            schullerID: req.body.schullerID,
-            password: hashedPassword,
-        })
-        console.log(users); //display users
-        res.redirect('/login')
+        const userName = req.body.name;
+        const schullerID = req.body.schullerID;
+        const password = req.body.password;
+
+        //push register data to an array an save them if value is valid
+        if(userName === '' || schullerID === '' || password === '') {
+            console.log('NotOK');
+            res.redirect('/register');
+        }else {
+            users.push({
+                id: Date.now().toString(),
+                name: req.body.name,
+                schullerID: req.body.schullerID,
+                password: hashedPassword,
+            })
+            console.log(users); //display users
+            res.redirect('/login');
+        };
     } catch (e) {
         console.log(e);
         res.redirect('/register');

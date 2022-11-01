@@ -35,13 +35,8 @@
             <div class="formConteiner">
                 <form id="form" action="/register" method="POST">
                     <h1 id="tittle">Anmelden</h1>
-
-                    <% if(messages.error) { %>
-                        <div class="alert alert-danger">
-                            <strong><%= messages.error %> </strong>
-                        </div>
-                    <% } %>
-
+                    <h3 id="error"></h3>
+                    
                     <label for="nachnameInput">Nachname:</label>
                     <input placeholder="z.B. Hans" name="name" id="nachnameInput" type="text"><br>
         
@@ -49,13 +44,13 @@
                     <input placeholder="z.B. Musterman" id="vornameInput" type="text"><br>
         
                     <label for="schullerIDInput">Schuller ID:</label>
-                    <input placeholder="z.B. 1234567" name="schullerID" id="schullerIDInput" type="text"><br>
+                    <input placeholder="z.B. 1234567" name="schullerID" id="schullerID" type="text"><br>
         
                     <label for="passwordInput">Kennwort:</label>
-                    <input placeholder="Password" id="passwordInput" type="password">
+                    <input placeholder="Password" id="password" type="password">
                     
                     <label for="passwordInput2">Kennwort bestätigen:</label>
-                    <input placeholder="Password" name="password" id="passwordInput2" type="password">
+                    <input placeholder="Password" name="password" id="rePassword" type="password">
 
                     <button type="submit"  id="anmeldenBtn">Anmelden</button>
                 </form>
