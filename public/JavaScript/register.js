@@ -13,7 +13,7 @@ const registerBtn = document.getElementById('anmeldenBtn');
 
 registerPageBtn.addEventListener('click', ShowRegisterPage);
 signUpPageBtn.addEventListener('click', ShowSignUpPage);
-//registerBtn.addEventListener('click', CheckAllFillds);
+registerBtn.addEventListener('click', ValidateInput);
 
 function ShowRegisterPage() {
     location.href ='/register';
@@ -26,32 +26,33 @@ function ShowSignUpPage() {
 //MAKE SURE RIGHT DATA IS INPUTED
 
 //make sure all field are filled
-/*function CheckAllFillds() {
-    const listOfFields = [name1, name2, schullerID, password, rePassword];
-    var submitOK = true;
+function ValidateInput() {
+    const inputsList = [
+        document.getElementById('nachnameInput').value,//0
+        document.getElementById('vornameInput').value,//1
+        document.getElementById('schullerID').value,//2
+        document.getElementById('password').value,//3
+        document.getElementById('rePassword').value//4
+    ]
 
-    if(name1.value.length < 1)
-    {
-        submitOK = false;
-    }
-    if(name2.value.length < 1)
-    {
-        submitOK = false;
-    }
-    if(schullerID.value.length < 1)
-    {
-        submitOK = false;
-    }
-    if(password.value.length < 1)
-    {
-        submitOK = false;
-    }
-    if(rePassword.value.length < 1)
-    {
-        submitOK = false;
+    const errorHolder = document.getElementById('error');
+
+
+    //check if all inputs have been field and if Schuller id is log enough and password are the same and long enough
+    if(inputsList[0].length < 1 || inputsList[1].length < 1 || inputsList[2].length < 1 || inputsList[3].length < 1 || inputsList[4].length < 1) {
+        registerBtn.setAttribute('type', 'button');
+        errorHolder.innerHTML = "All Fields must be field";
+        return;
+    }else if (inputsList[2].length < 8 ) {
+        registerBtn.setAttribute('type', 'button');
+        errorHolder.innerHTML = "SchullerID must be 8 character or longer";
+        return;
+    }else if(inputsList[3] != inputsList[4] || inputsList[3].length <= 6) {
+        registerBtn.setAttribute('type', 'button');
+        errorHolder.innerHTML = "Password must match, and longer than 6 charachters"
+        return;
+    }else {
+        registerBtn.setAttribute('type', 'submit');
     }
 
-    if(submitOK) {
-        console.log(submitOK);
-        location.href = "/login"};
-};*/
+};

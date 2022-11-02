@@ -58,19 +58,14 @@ app.post("/register", async (req, res, done) => {
         const password = req.body.password;
 
         //push register data to an array an save them if value is valid
-        if(userName === '' || schullerID === '' || password === '') {
-            console.log('NotOK');
-            res.redirect('/register');
-        }else {
-            users.push({
-                id: Date.now().toString(),
-                name: req.body.name,
-                schullerID: req.body.schullerID,
-                password: hashedPassword,
-            })
+        users.push({
+            id: Date.now().toString(),
+            name: req.body.name,
+            schullerID: req.body.schullerID,
+            password: hashedPassword,
+        });
             console.log(users); //display users
             res.redirect('/login');
-        };
     } catch (e) {
         console.log(e);
         res.redirect('/register');

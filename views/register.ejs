@@ -35,7 +35,7 @@
             <div class="formConteiner">
                 <form id="form" action="/register" method="POST">
                     <h1 id="tittle">Anmelden</h1>
-                    <h3 id="error"></h3>
+                    <h3 id="error" style="color: red;"></h3>
                     
                     <label for="nachnameInput">Nachname:</label>
                     <input placeholder="z.B. Hans" name="name" id="nachnameInput" type="text"><br>
@@ -52,7 +52,7 @@
                     <label for="passwordInput2">Kennwort bestätigen:</label>
                     <input placeholder="Password" name="password" id="rePassword" type="password">
 
-                    <button type="submit"  id="anmeldenBtn">Anmelden</button>
+                    <button name="submitBtn" type="submit"  id="anmeldenBtn">Anmelden</button>
                 </form>
             </div>
 

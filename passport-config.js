@@ -17,8 +17,7 @@ function initialize(passport, getUserBySchullerID, getUserById){
             }
         } catch (e) {
             console.log(e);
-            return done(e);
-            
+            return done(e);    
         }
     }
 
