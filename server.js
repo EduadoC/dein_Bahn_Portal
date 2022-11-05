@@ -8,18 +8,40 @@ const path = require('path');
 const app = express();
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const initializelizePassport = require('./passport-config');
 const flash = require('express-flash');
 const session = require('express-session');
-const { Console } = require("console");
+const mongoose = require('mongoose');
+const localStrategy = require('passport-local').Strategy;
 
-const users = []
 
-initializelizePassport(
-    passport,
-    schullerID => users.find(user => user.schullerID === schullerID), //searched user on array
-    id => users.find(user => user.id === id)
-);
+//user Schema implementation
+mongoose 
+ .connect('mongodb://127.0.0.1./dein_bahn_portal', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true})   
+ .then(() => console.log("Database connected!"))
+ .catch(err => console.log(err));
+
+const UserSchema = mongoose.Schema({
+    nachname: {
+        type: String,
+        required: true
+    },
+    vorname: {
+        type: String,
+        required: true
+    },
+    schullerID: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        require:true
+    }   
+});
+
+const User = mongoose.model('User', UserSchema);
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({extended: false}));
@@ -41,6 +63,20 @@ function isLoggedOut(req, res, next) {
     res.redirect('/');
 }
 
+passport.use(new localStrategy(function(username, password, done){
+    User.findOne({schullerID: schullerID}, function(err, user){
+        if(err) {return done(err);}
+        if(!user) {return done(null, false, {message: "Inncorrect SchullerID."}); }
+
+        bcrypt.compare(password, user.password, function(err, res){
+            if(err) return done(err);
+            if(res === false) { return done(null, false, {message: "Inncorrect password."})};
+
+            return done(null, user);
+        });
+    });
+}));
+
 //Configuring the login post functionallity
 
 app.post('/login', passport.authenticate('local' , {
@@ -50,7 +86,7 @@ app.post('/login', passport.authenticate('local' , {
 }));
 
 //Configuring the register post functionallity
-app.post("/register", async (req, res, done) => {
+app.post("/register", async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);//this hashed the pass
         const userName = req.body.name;
@@ -58,14 +94,17 @@ app.post("/register", async (req, res, done) => {
         const password = req.body.password;
 
         //push register data to an array an save them if value is valid
-        users.push({
-            id: Date.now().toString(),
-            name: req.body.name,
+        const newUser = await new User({
+            nachname: req.body.name,
+            vorname: req.body.vorname,
             schullerID: req.body.schullerID,
-            password: hashedPassword,
+            password: hashedPassword 
         });
-            console.log(users); //display users
-            res.redirect('/login');
+
+        newUser.save();
+
+        console.log(newUser); //display users
+        res.redirect('/login');
     } catch (e) {
         console.log(e);
         res.redirect('/register');

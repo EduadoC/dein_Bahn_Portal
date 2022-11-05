@@ -28,4 +28,3 @@ function initialize(passport, getUserBySchullerID, getUserById){
     });
 }
 
-module.exports = initialize;
